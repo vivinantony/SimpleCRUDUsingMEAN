@@ -1,0 +1,124 @@
+<!DOCTYPE>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CRUD</title>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        .pointer {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body ng-controller="AppCtrl">
+    <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#AddModal">Add</button>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Place</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in users" ng-click="view(user._id)" data-toggle="modal" data-target="#ViewModal" class="pointer">
+                <td>{{user.name}}</td>
+                <td>{{user.place}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Add Modal -->
+    <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="AddModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="AddModalLabel">Add</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <tr>
+                            <td>Name:</td>
+                            <td><input class="form-control" type="text" placeholder="Name" ng-model="user.name"></td>
+                        </tr>
+                        <tr>
+                            <td>Place:</td>
+                            <td><input class="form-control" type="text" placeholder="Place" ng-model="user.place"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="add()" data-dismiss="modal">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Modal -->
+    <div class="modal fade" id="ViewModal" tabindex="-1" role="dialog" aria-labelledby="ViewModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="ViewModalLabel">View</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <tr>
+                            <td>Name:</td>
+                            <td>{{user.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Place:</td>
+                            <td>{{user.place}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="view(user._id)" data-dismiss="modal" data-toggle="modal" data-target="#EditModal">Edit</button>
+                    <button type="button" class="btn btn-danger" ng-click="delete(user._id)" data-dismiss="modal">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="EditModalLabel">Edit</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <tr>
+                            <td>Name:</td>
+                            <td><input class="form-control" type="text" placeholder="Name" ng-model="user.name"></td>
+                        </tr>
+                        <tr>
+                            <td>Place:</td>
+                            <td><input class="form-control" type="text" placeholder="Place" ng-model="user.place"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="update()" data-dismiss="modal">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="libs/angular/angular.min.js"></script>
+    <script src="libs/angular-route/angular-route.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

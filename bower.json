@@ -1,0 +1,14 @@
+{
+  "name": "CRUD",
+  "version": "1.0.0",
+  "description": "A demo for CRUD",
+  "author": "thelittletechie@gmail.com",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.2.16",
+    "angular-route": "~1.2.16",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.1"
+  }
+}
